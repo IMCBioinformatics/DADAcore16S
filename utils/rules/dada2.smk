@@ -5,8 +5,8 @@ rule plotQualityProfileRaw:
     output:
         R1=config["output_dir"]+"/figures/quality/rawFilterQualityPlots"+ config["forward_read_suffix"]+".png",
         R2=config["output_dir"]+"/figures/quality/rawFilterQualityPlots"+ config["reverse_read_suffix"]+".png"
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/plotQualityProfile.R"
 
@@ -19,8 +19,8 @@ rule plotQualityProfileAfterQC:
     output:
         R1=config["output_dir"]+"/figures/quality/afterQCQualityPlots"+ config["forward_read_suffix"]+".png",
         R2=config["output_dir"]+"/figures/quality/afterQCQualityPlots"+ config["reverse_read_suffix"]+".png"
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/plotQualityProfile.R"
 
@@ -41,8 +41,8 @@ rule dada2Filter:
         percent_phix= config["output_dir"]+"/dada2/percent_phix.txt"
     threads:
          config["threads"]
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/dada2_filter.R"
 
@@ -55,8 +55,8 @@ rule plotQualityProfileAfterdada2:
     output:
         R1=config["output_dir"]+"/figures/quality/afterdada2FilterQualityPlots"+ config["forward_read_suffix"]+".png",
         R2=config["output_dir"]+"/figures/quality/afterdada2FilterQualityPlots"+ config["reverse_read_suffix"]+".png"
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/plotQualityProfile.R"
 
@@ -74,8 +74,8 @@ rule read_subsampling:
         output_dir=config["output_dir"]+"/subsampled",
         output_suff_r1=config["forward_read_suffix"]+"_subsampled"+ config["compression_suffix"],
         output_suff_r2=config["reverse_read_suffix"]+"_subsampled"+ config["compression_suffix"]
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     shell:
         """
         if [[ "{config[subsample]}" == "True" ]]; then
@@ -106,8 +106,8 @@ rule learnErrorRates:
         plotErr2=config["output_dir"]+"/figures/errorRates/ErrorRates" + config["reverse_read_suffix"]+ ".pdf"
     threads:
         config['threads']
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     params:
         neg=config["Negative_samples"]
     script:
@@ -128,8 +128,8 @@ rule process_sample:
         derepR = config["output_dir"] + "/dada2/intermediate_files/derepR_{sample}.rds"
     threads:
         config["generateSeqtab_threads"]
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/process_sample.R"
 
@@ -144,8 +144,8 @@ rule merge_seqtabs:
     output:
         seqtab = config["output_dir"] + "/dada2/seqtab_with_chimeras.rds",
         nreads = config["output_dir"] + "/dada2/Nreads_with_chimeras.txt"
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     params:
         sample=SAMPLES
     script:
@@ -162,8 +162,8 @@ rule removeChimeras:
         nreads=temp(config["output_dir"]+"/dada2/Nreads_nochimera.txt")
     threads:
         config['threads']
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/removeChimeras.R"
 
@@ -177,8 +177,8 @@ rule plotASVLength:
         plot_seqlength= config["output_dir"]+"/figures/length_distribution/Sequence_Length_distribution.png"
     threads:
         config["threads"]
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/asv_length_distribution_plotting.R"
 
@@ -194,7 +194,7 @@ rule RDPtaxa:
         rds_bootstrap=config["output_dir"]+"/taxonomy/dada2_tables/{ref}_RDP_boostrap.rds"
     threads:
         config['taxonomy_threads']
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/RDPtaxa.R"
