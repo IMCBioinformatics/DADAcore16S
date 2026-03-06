@@ -8,8 +8,8 @@ rule qc_report:
         rules.separate_vsearch_hits.output,
         rules.vsearchParse.output,
         rules.combining_annotations.output
-    conda:
-        "rmd"
+    singularity:
+        "apptainer/rmd-1.0.0.sif"
     params:
         path=config["path"],
         outdir=config["path"]+"/"+ config["output_dir"],
