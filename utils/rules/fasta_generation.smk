@@ -5,7 +5,7 @@ rule fasta_file:
         seqfasta=config["output_dir"]+"/fasta_files/ASVs_seqs.fasta"
     threads:
         config['threads']
-    conda:
-        "dada2_new"
+    singularity:
+        "apptainer/dada2-1.0.0.sif"
     script:
         "../scripts/dada2/fastaGeneration.R"
