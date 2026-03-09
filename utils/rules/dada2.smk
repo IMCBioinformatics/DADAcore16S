@@ -64,8 +64,8 @@ rule plotQualityProfileAfterdada2:
 
 rule learnErrorRates:
     input:
-        R1= rules.read_subsampling.output.R1_subsampled if config.get("subsample", True) else rules.dada2Filter.output.R1,
-        R2= rules.read_subsampling.output.R2_subsampled if config.get("subsample", True) else rules.dada2Filter.output.R2
+        R1= rules.dada2Filter.output.R1,
+        R2= rules.dada2Filter.output.R2
     output:
         errR1= config["output_dir"]+"/dada2/learnErrorRates/ErrorRates" + config["forward_read_suffix"]+ ".rds",
         errR2 = config["output_dir"]+"/dada2/learnErrorRates/ErrorRates" + config["reverse_read_suffix"]+ ".rds",
