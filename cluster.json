@@ -64,7 +64,7 @@
   {
     "cpus-per-task" : 25,
   },
-  "vsearchURE" :
+  "vsearchFieldDB" :
   {
     "cpus-per-task" : 25,
   },
