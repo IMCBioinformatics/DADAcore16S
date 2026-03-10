@@ -280,7 +280,7 @@ python utils/scripts/common/prepare.py <DIR>
 | -------------- | --------------- | ------------ |
 | input_dir | path of the input directory | "/home/data" |
 | output_dir | name and path to the output directory | "output" |
-| path | path to the main snakemake directory | "/home/analysis/dada2_snakemake_workflow" |
+| path | path to the main snakemake directory | "/home/analysis/DADAcore16S" |
 | forward_read_suffix, reverse_read_suffix | Forward and reverse reads format | "_R1_001" "_R2_001" |
 | primer_removal | set to TRUE to remove primers | True |
 | primer_investigation | checking for primers presence before and after removal | True |
