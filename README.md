@@ -18,9 +18,16 @@ In this pipeline, species-level taxonomy assignment is performed using two compl
 VSEARCH, an open-source alternative to the widely utilized USEARCH tool, is employed in this context. VSEARCH excels in performing optimal global sequence alignments for the query against potential target sequences.
 For a more comprehensive understanding of this methodology, please refer to the paper available at https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5075697/ and the manual at https://github.com/torognes/vsearch/releases/download/v2.27.0/vsearch_manual.pdf. GTDB database was used for final taxonomy assignmnet and where GTDB was unable to provide an annotation for an ASV, we utilized the corresponding annotation from the URE database.
 
-Finally for combining the annotation results from Vsearch and DADA2, we prioritized annotations from VSEARCH over those from the DADA2 RDP classification. This approach ensures a comprehensive and accurate taxonomy assignment by leveraging the strengths of multiple databases and methodologies.
+Finally for combining the annotation results from Vsearch and DADA2, we prioritized annotations from VSEARCH over those from the DADA2 RDP classification. This approach ensures a comprehensive and accurate taxonomy assignment by leveraging the strengths of multiple databases and methodologies. As a summary, taxonomy is assigned using a hierarchical strategy prioritizing VSEARCH-GTDB, followed by VSEARCH with a field-specific database, then DADA2-GTDB, and finally DADA2 with the field-specific database. Species-level gaps in VSEARCH assignments (NA assigned by VSEARCH) are supplemented using DADA2 classifications.
 
-As a summary, taxonomy is assigned using a hierarchical strategy prioritizing VSEARCH-GTDB, followed by VSEARCH with a field-specific database, then DADA2-GTDB, and finally DADA2 with the field-specific database. Species-level gaps in VSEARCH assignments (NA assigned by VSEARCH) are supplemented using DADA2 classifications.
+<br>
+
+At the end of the workflow, we generate two versions of taxonomy annotation files, allowing users to choose the format that best fits their downstream analysis:
+
+dada2_all_databases_merged.csv Contains taxonomic annotations from all databases side by side (e.g., GTDB, SILVA, RDP, URE), without combining or prioritizing them. This file is useful for users who want to compare database outputs directly.
+
+vsearch_dada2_merged.tsv Provides a single, merged annotation per ASV by combining VSEARCH and DADA2 results from two main databases: the GTDB reference database and a field-specific database ( here URE).
+
 <br>
 
 ## Overview
