@@ -6,8 +6,7 @@
 [![DADA2](https://img.shields.io/badge/DADA2-v1.34.0-orange)](https://benjjneb.github.io/dada2/index.html)
 
 
-This is a snakemake workflow for profiling microbial communities from amplicon sequencing
-data using dada2. DADA2 tutorial can be found from https://benjjneb.github.io/dada2/index.html. The initial code was cloned from https://github.com/SilasK/amplicon-seq-dada2 and modified to make a workflow suitable for our needs.
+This is a snakemake workflow for profiling microbial communities from amplicon sequencing data using dada2. DADA2 tutorial can be found from https://benjjneb.github.io/dada2/index.html. The initial code was cloned from https://github.com/SilasK/amplicon-seq-dada2 and modified to make a workflow suitable for our needs. This workflow has been modified to work with NextSeq data.
 
 <br>
 
