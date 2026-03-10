@@ -3,7 +3,7 @@
 
 [![Conda](https://img.shields.io/badge/conda-v22.11.1-lightgrey)](https://docs.conda.io/en/latest/)
 [![Snakemake](https://img.shields.io/badge/snakemake-7.32.4-blue)](https://snakemake.bitbucket.io)
-[![DADA2](https://img.shields.io/badge/DADA2-v1.26.0-orange)](https://benjjneb.github.io/dada2/index.html)
+[![DADA2](https://img.shields.io/badge/DADA2-v1.34.0-orange)](https://benjjneb.github.io/dada2/index.html)
 
 
 This is a snakemake workflow for profiling microbial communities from amplicon sequencing
