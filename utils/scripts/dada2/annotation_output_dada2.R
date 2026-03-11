@@ -13,9 +13,9 @@ taxa_Silva<-read.table(paste0(snakemake@config[["output_dir"]],"/taxonomy/dada2_
 taxa_Silva<-cbind(taxa_Silva,rownames(taxa_Silva))
 colnames(taxa_Silva)[8]<-"asv_seq"
 
-taxa_URE<-read.table(paste0(snakemake@config[["output_dir"]],"/taxonomy/dada2_tables/URE_RDP.tsv"))
-taxa_URE<-cbind(taxa_URE,rownames(taxa_URE))
-colnames(taxa_URE)[8]<-"asv_seq"
+taxa_FieldDB<-read.table(paste0(snakemake@config[["output_dir"]],"/taxonomy/dada2_tables/FieldDB_RDP.tsv"))
+taxa_FieldDB<-cbind(taxa_FieldDB,rownames(taxa_FieldDB))
+colnames(taxa_FieldDB)[8]<-"asv_seq"
 
 seqtab<-readRDS(snakemake@input[["seqs"]])
 seqtab2<-t(seqtab)
@@ -39,7 +39,7 @@ colnames(df)<-c("asv_num", "asv_seq","asv_len")
 df1<-left_join(df,taxa_GTDB,by="asv_seq")
 df2<-left_join(df1,taxa_RDP,by="asv_seq")
 df3<-left_join(df2,taxa_Silva,by="asv_seq")
-df4<-left_join(df3,taxa_URE,by="asv_seq")
+df4<-left_join(df3,taxa_FieldDB,by="asv_seq")
 df5<-left_join(df4,seqtab4,by="asv_seq")
   
 colnames(df5)[1:31]<-c("asv_num", "asv_seq", "asv_len",	
@@ -48,8 +48,8 @@ colnames(df5)[1:31]<-c("asv_num", "asv_seq", "asv_len",
                          "phylum_rdp",	"class_rdp",	"order_rdp",	"family_rdp",	
                          "genus_rdp",	"species_rdp",	"kingdom_silva",	"phylum_silva",	
                          "class_silva",	"order_silva",	"family_silva",	"genus_silva",	
-                         "species_silva","kingdom_URE",	"phylum_URE",	"class_URE",	
-                         "order_URE",	"family_URE",	"genus_URE",	"species_URE")
+                         "species_silva","kingdom_FieldDB",	"phylum_FieldDB",	"class_FieldDB",	
+                         "order_FieldDB",	"family_FieldDB",	"genus_FieldDB",	"species_FieldDB")
     
 
 colnames(df5) <- gsub("^X", "", colnames(df5))
