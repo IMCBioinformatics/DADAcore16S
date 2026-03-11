@@ -417,6 +417,28 @@ To make sure that the pipeline is run completely, we need to check the log and o
 | ./output/taxonomy | vsearch_dada2_merged.tsv | merged vsearch (GTDB/field-specific DB) and dada2 annotations (GTDB/RDP/Silva/field-specific DB), corresponding abundance across samples, and final annotation with priority of vsearch (GTDB then field-specific DB, if GTDB annotation is NA) over dada2 (GTDB then field-specific DB) |
 | ./output/primer_status | primer_existance_raw.csv , primer_existance_trimmed.csv | Files to show primers existance before and after primer removal, if applicable |
 
+</details>
 
+
+
+<details>
+<summary><h3 style="font-size: 24px;">5. Version Check</h3></summary> 
+ 
+If you are using local environments, you can check the tool versions by running:
+
+```bash
+bash Version_check.sh
+```
+
+If you used different names for your local environments, please update them accordingly inside the bash script before running it.
+
+If you are using Apptainer images, you can also check the tool versions by running:
+
+```bash
+bash Version_check_apptainer.sh
+```
+
+Please make sure the tool versions referenced in the script match the versions of the images you have downloaded.
 
 </details>
+
