@@ -43,7 +43,6 @@ For more details on output files please check section 4.
 * ASV abundance table
 * Summary of reads count at each step of the ppipeline
 * ASV sequences in a fasta format
-* A phylogenetic tree
 * A QC report file
 
 <br> 
