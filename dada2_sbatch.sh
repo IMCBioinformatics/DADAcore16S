@@ -55,6 +55,7 @@ cp -rf utils $snakemake_file_dir
 cp used_tools_versions.txt $snakemake_file_dir
 cp jobIDs_info.txt $snakemake_file_dir
 
+bash Version_check.sh > used_tools_versions.txt
 
 echo "Finished at: `date`"
 
