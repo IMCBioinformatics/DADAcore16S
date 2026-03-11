@@ -301,7 +301,7 @@ python utils/scripts/common/prepare.py <DIR>
 | chimera_method | method used for chimera detection | consensus |
 | Identity | minimum percent identity for a hit to be considered a match | percentage e.g. 0.993 |
 | Maxaccepts | maximum number of hits to consider per query | numeric e.g. 30 |
-| DB_after_GTDB | running field-specific database after GTDB using VSEARCH taxonomy assignment | False |
+| FieldDB_after_GTDB | running field-specific database after GTDB using VSEARCH taxonomy assignment | False |
 | RDP_dbs, vsearch_DBs | databases used for taxonomy assignment | |
 
 <br>
