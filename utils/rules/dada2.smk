@@ -35,8 +35,7 @@ rule dada2Filter:
         R2= expand(config["output_dir"]+"/dada2/dada2_filter/{sample}" + config["reverse_read_suffix"] + config["compression_suffix"],sample=SAMPLES),
         nreads= temp(config["output_dir"]+"/dada2/Nreads_filtered.txt")
     params:
-        samples=SAMPLES,
-        nread=config["output_dir"]+"/dada2/Nreads_filtered.txt"
+        samples=SAMPLES
     threads:
          config["threads"]
     singularity:
