@@ -127,10 +127,17 @@ pip install pyyaml
 <br>
 
 ### 1.3. singularity/apptainer
-If you're working on a cluster check if apptainner/singularity is already installed:
+
+<br>
+
+If you are working on a cluster, first check whether Apptainer/Singularity is already installed, then configure it to connect to and use the Sylabs cloud container library for pulling container images.
 
 ```bash
 module avail singularity
+
+singularity remote add SylabsCloud cloud.sylabs.io 
+
+singularity remote use SylabsCloud 
 ```
 
 
