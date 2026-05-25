@@ -165,7 +165,7 @@ apptainer pull rmd-1.0.0.sif library://saharbagheri/femmicro16s/rmd:1.0.0
 apptainer pull vsearch-1.0.0.sif library://saharbagheri/femmicro16s/vsearch:1.0.0
 ```
 
-Make sure to adjust the file names if you are using newer image versions or if your previous setup relied on local Conda environments. To do this, update all Snakemake rules in DADAcore16S/utils/rules/*.smk so that they reference either your local environments or the appropriate .sif files in the apptainer/ folder. The default configuration now uses the Apptainer images.
+Make sure to adjust the image file names if you are using newer image versions (e.g. qc-3.0.0.sif instead of qc-1.0.0.sif) or if your previous setup relied on local Conda environments (e.g. conda: "env name" in all snakemake rule files in utils/rules/).To do this, update all Snakemake rules in DADAcore16S/utils/rules/*.smk so that they reference either your local environments or the appropriate .sif files in the apptainer/ folder. The default configuration now uses the Apptainer images.
 
 If you need to manually change from conda to singularity for example, change:
 
